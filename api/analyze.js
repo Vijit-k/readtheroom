@@ -36,7 +36,7 @@ Return this exact JSON structure:
   "rewrite_professional": "rewrite of the original message in clear, formal, professional tone — same intent, better delivery",
   "rewrite_warm": "rewrite in warm, friendly, emotionally intelligent tone — make it feel human",
   "rewrite_direct": "rewrite in confident, direct, no-fluff tone — get to the point without being rude",
-  "fun_interpretation": "${funMode ? 'a witty, humorous translation of what this message REALLY means — max 2 sentences, plain everyday language, no internet slang or abbreviations like TL;DR. Write like a funny friend explaining it at a dinner table.' : ''}"
+  "fun_interpretation": "${funMode ? 'a witty, humorous translation of what this message REALLY means — max 2 sentences, Gen Z energy and slang is welcome, but avoid unexplained abbreviations like TL;DR. Say the funny thing out loud, do not summarise it.' : ''}"
 }
 
 Scoring guide for risk_score:
