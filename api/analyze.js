@@ -1,5 +1,7 @@
-// Vercel serverless function — proxies Gemini API, keeps key secure
-// SETUP: Vercel → Settings → Environment Variables → GEMINI_API_KEY
+// Vercel serverless function — proxies Groq API, keeps key secure
+// SETUP: Vercel → Settings → Environment Variables → GROQ_API_KEY
+// Get a free key at: https://console.groq.com
+// Free tier: 14,400 req/day, 30 req/min — plenty for public usage
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') return res.status(405).send('Method Not Allowed');
@@ -45,23 +47,26 @@ Scoring guide for risk_score:
 
     try {
         const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${process.env.GEMINI_API_KEY}`,
+            'https://api.groq.com/openai/v1/chat/completions',
             {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+                },
                 body: JSON.stringify({
-                    contents: [{ parts: [{ text: prompt }] }],
-                    generationConfig: {
-                        temperature: funMode ? 0.85 : 0.2,
-                        maxOutputTokens: 1024,
-                    },
+                    model: 'llama-3.1-8b-instant',
+                    messages: [{ role: 'user', content: prompt }],
+                    temperature: funMode ? 0.85 : 0.2,
+                    max_tokens: 1024,
+                    response_format: { type: 'json_object' },
                 }),
             }
         );
 
         if (!response.ok) {
             const err = await response.text();
-            console.error('[ReadTheRoom] Gemini error:', response.status, err);
+            console.error('[ReadTheRoom] Groq error:', response.status, err);
             if (response.status === 429) {
                 return res.status(429).json({
                     error: 'rate_limit',
@@ -70,15 +75,15 @@ Scoring guide for risk_score:
             }
             let detail = '';
             try { detail = JSON.parse(err)?.error?.message || ''; } catch {}
-            throw new Error(`Gemini API error ${response.status}${detail ? ': ' + detail : ''}`);
+            throw new Error(`API error ${response.status}${detail ? ': ' + detail : ''}`);
         }
 
         const data = await response.json();
-        const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        const rawText = data.choices?.[0]?.message?.content || '';
 
-        // Extract JSON from response (handles markdown code blocks)
+        // Extract JSON from response
         const jsonMatch = rawText.match(/\{[\s\S]*\}/);
-        if (!jsonMatch) throw new Error('No JSON in Gemini response');
+        if (!jsonMatch) throw new Error('No JSON in response');
 
         const result = JSON.parse(jsonMatch[0]);
 
