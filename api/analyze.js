@@ -62,6 +62,12 @@ Scoring guide for risk_score:
         if (!response.ok) {
             const err = await response.text();
             console.error('[ReadTheRoom] Gemini error:', response.status, err);
+            if (response.status === 429) {
+                return res.status(429).json({
+                    error: 'rate_limit',
+                    message: "We've hit the free API limit for now. This resets every minute — please wait 30–60 seconds and try again.",
+                });
+            }
             let detail = '';
             try { detail = JSON.parse(err)?.error?.message || ''; } catch {}
             throw new Error(`Gemini API error ${response.status}${detail ? ': ' + detail : ''}`);

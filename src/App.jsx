@@ -147,6 +147,11 @@ export default function App() {
       }
 
       const data = await res.json()
+
+      if (res.status === 429 || data.error === 'rate_limit') {
+        throw new Error(data.message || "We've hit the free API limit. Please wait 30–60 seconds and try again.")
+      }
+
       setResult(data)
       setActiveRewrite('professional')
 
@@ -339,7 +344,16 @@ export default function App() {
 
         {/* ── Error ── */}
         {error && (
-          <p className="mt-4 text-center text-sm text-red-500 dark:text-red-400">{error}</p>
+          <div className={`mt-4 flex items-start gap-3 px-4 py-3 rounded-2xl border text-sm ${
+            error.includes('wait') || error.includes('limit')
+              ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300'
+              : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-700 dark:text-red-400'
+          }`}>
+            <span className="text-base mt-0.5 flex-shrink-0">
+              {error.includes('wait') || error.includes('limit') ? '⏳' : '⚠️'}
+            </span>
+            <p className="leading-relaxed">{error}</p>
+          </div>
         )}
 
         {/* ── Loading ── */}
