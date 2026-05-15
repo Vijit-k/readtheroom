@@ -277,7 +277,7 @@ export default function App() {
                 className={`relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none ${funMode ? 'bg-violet-500' : 'bg-slate-200 dark:bg-slate-600'}`}>
                 <span className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow-sm transition-transform duration-200 ${funMode ? 'translate-x-6' : 'translate-x-1'}`} />
               </button>
-              <span className="text-xs text-slate-500 dark:text-slate-400">
+              <span className="text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">
                 Fun Mode {funMode && '😂'}
               </span>
             </label>
