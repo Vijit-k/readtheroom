@@ -299,6 +299,31 @@ export default function App() {
           ))}
         </div>
 
+        {/* ── Vijit Labs products strip ── */}
+        <div className="mb-5 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60">
+          <p className="text-xs text-slate-400 dark:text-slate-500 mb-3 font-semibold uppercase tracking-wider">More AI tools by Vijit Labs</p>
+          <div className="grid grid-cols-3 gap-2">
+            <a href="https://escalationai.vijit.in" target="_blank" rel="noopener noreferrer"
+              className="flex flex-col gap-1 p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-700 hover:bg-orange-50 dark:hover:bg-orange-900/10 transition-all group">
+              <span className="text-base">⚡</span>
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-orange-700 dark:group-hover:text-orange-400 leading-tight">EscalationAI</span>
+              <span className="text-[10px] text-slate-400 leading-tight">Zendesk risk scoring</span>
+            </a>
+            <a href="https://calllens.vijit.in" target="_blank" rel="noopener noreferrer"
+              className="flex flex-col gap-1 p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/10 transition-all group">
+              <span className="text-base">🎙️</span>
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 leading-tight">CallLensAI</span>
+              <span className="text-[10px] text-slate-400 leading-tight">Call analysis & coaching</span>
+            </a>
+            <a href="https://sspro.vijit.in" target="_blank" rel="noopener noreferrer"
+              className="flex flex-col gap-1 p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-700 hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-all group">
+              <span className="text-base">🎯</span>
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-blue-700 dark:group-hover:text-blue-400 leading-tight">SalesScraper Pro</span>
+              <span className="text-[10px] text-slate-400 leading-tight">LinkedIn lead extraction</span>
+            </a>
+          </div>
+        </div>
+
         {/* ── Analyze button ── */}
         <button
           onClick={analyze}
