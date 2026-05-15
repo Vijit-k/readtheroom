@@ -27,7 +27,7 @@ ${text.replace(/"/g, "'")}
 Return this exact JSON structure:
 {
   "tone": "choose the single best from: Passive Aggressive, Polite Avoidance, Genuine Appreciation, Angry Customer, Defensive, Manipulative, Corporate Jargon, Friendly, Anxious, Threatening, Sarcastic, Dismissive, Urgent, Professional, Gaslighting",
-  "tone_emoji": "single most fitting emoji for this tone",
+  "tone_emoji": "single most fitting Unicode emoji character for this tone — use the actual emoji symbol, NOT shortcode notation like :emoji_name:",
   "tone_description": "1-2 sentences describing the tone in plain English — be specific and insightful",
   "hidden_meaning": "what the sender probably really means, in conversational plain English — be honest, specific, and a little brave",
   "risk_level": "Low, Medium, or High — based on relationship damage or escalation potential",

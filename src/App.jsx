@@ -346,7 +346,7 @@ export default function App() {
           />
           <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/50">
             {/* Fun mode toggle */}
-            <label className="flex items-center gap-2.5 cursor-pointer select-none">
+            <label className="flex items-center gap-2.5 cursor-pointer select-none flex-shrink-0">
               <button
                 onClick={() => setFunMode(f => !f)}
                 className={`relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none ${funMode ? 'bg-violet-500' : 'bg-slate-200 dark:bg-slate-600'}`}>
