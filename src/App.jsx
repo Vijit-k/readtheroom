@@ -346,20 +346,16 @@ export default function App() {
           />
           <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/50">
             {/* Fun mode toggle */}
-            <div className="flex items-center flex-shrink-0" style={{gap:'12px'}}>
-              <button
-                onClick={() => setFunMode(f => !f)}
-                style={{minWidth:'44px'}}
-                className={`relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none ${funMode ? 'bg-violet-500' : 'bg-slate-200 dark:bg-slate-600'}`}>
-                <span className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow-sm transition-transform duration-200 ${funMode ? 'translate-x-6' : 'translate-x-1'}`} />
-              </button>
-              <span
-                onClick={() => setFunMode(f => !f)}
-                className="text-xs text-slate-500 dark:text-slate-400 cursor-pointer select-none"
-                style={{whiteSpace:'nowrap'}}>
-                Fun Mode {funMode ? '😂' : ''}
-              </span>
-            </div>
+            <button
+              onClick={() => setFunMode(f => !f)}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all flex-shrink-0 whitespace-nowrap ${
+                funMode
+                  ? 'bg-violet-100 dark:bg-violet-900/40 text-violet-600 dark:text-violet-400'
+                  : 'bg-slate-100 dark:bg-slate-700/60 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+              }`}>
+              <span className={`w-2 h-2 rounded-full flex-shrink-0 ${funMode ? 'bg-violet-500' : 'bg-slate-400 dark:bg-slate-500'}`} />
+              Fun Mode {funMode ? '😂' : ''}
+            </button>
             <div className="flex items-center gap-3">
               <span className="text-xs text-slate-300 dark:text-slate-600">{text.length}/3000</span>
               <span className="text-xs text-slate-300 dark:text-slate-600 hidden sm:block">⌘↵ to analyze</span>
