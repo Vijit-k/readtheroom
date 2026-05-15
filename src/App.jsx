@@ -486,10 +486,9 @@ export default function App() {
       <footer className="mt-12 border-t border-slate-200/80 dark:border-slate-800/80 py-8">
         <div className="max-w-2xl mx-auto px-4 text-center space-y-2">
           <a href="https://vijitlabs.com" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 hover:opacity-80 transition-opacity">
-            <div className="bg-slate-900 dark:bg-slate-800 rounded-xl px-5 py-3">
-              <img src="/logo-full.png" alt="Vijit Labs" className="h-10 object-contain" />
-            </div>
+            className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <img src="/logo-icon.png" alt="Vijit Labs" className="w-7 h-7 object-contain" />
+            <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">Vijit Labs</span>
           </a>
           <p className="text-xs text-slate-400 dark:text-slate-500">AI tools for support &amp; sales teams</p>
           <div className="flex items-center justify-center gap-4 text-xs text-slate-400 dark:text-slate-500">
