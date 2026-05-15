@@ -346,17 +346,20 @@ export default function App() {
           />
           <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/50">
             {/* Fun mode toggle */}
-            <label className="flex items-center gap-2.5 cursor-pointer select-none flex-shrink-0">
+            <div className="flex items-center flex-shrink-0" style={{gap:'12px'}}>
               <button
                 onClick={() => setFunMode(f => !f)}
+                style={{minWidth:'44px'}}
                 className={`relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none ${funMode ? 'bg-violet-500' : 'bg-slate-200 dark:bg-slate-600'}`}>
                 <span className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow-sm transition-transform duration-200 ${funMode ? 'translate-x-6' : 'translate-x-1'}`} />
               </button>
-              <span className="text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                Fun Mode
+              <span
+                onClick={() => setFunMode(f => !f)}
+                className="text-xs text-slate-500 dark:text-slate-400 cursor-pointer select-none"
+                style={{whiteSpace:'nowrap'}}>
+                Fun Mode {funMode ? '😂' : ''}
               </span>
-              {funMode && <span className="text-sm">😂</span>}
-            </label>
+            </div>
             <div className="flex items-center gap-3">
               <span className="text-xs text-slate-300 dark:text-slate-600">{text.length}/3000</span>
               <span className="text-xs text-slate-300 dark:text-slate-600 hidden sm:block">⌘↵ to analyze</span>
