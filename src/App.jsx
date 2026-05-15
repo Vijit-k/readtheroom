@@ -283,8 +283,9 @@ export default function App() {
                 <span className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow-sm transition-transform duration-200 ${funMode ? 'translate-x-6' : 'translate-x-1'}`} />
               </button>
               <span className="text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                Fun Mode {funMode && '😂'}
+                Fun Mode
               </span>
+              {funMode && <span className="text-sm">😂</span>}
             </label>
             <div className="flex items-center gap-3">
               <span className="text-xs text-slate-300 dark:text-slate-600">{text.length}/3000</span>
