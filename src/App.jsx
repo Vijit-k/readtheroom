@@ -348,12 +348,11 @@ export default function App() {
             {/* Fun mode toggle */}
             <button
               onClick={() => setFunMode(f => !f)}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all flex-shrink-0 whitespace-nowrap ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all flex-shrink-0 whitespace-nowrap border ${
                 funMode
-                  ? 'bg-violet-100 dark:bg-violet-900/40 text-violet-600 dark:text-violet-400'
-                  : 'bg-slate-100 dark:bg-slate-700/60 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-violet-500 border-violet-500 text-white'
+                  : 'bg-transparent border-slate-300 dark:border-slate-600 text-slate-400 dark:text-slate-500 hover:border-violet-400 dark:hover:border-violet-600 hover:text-violet-500 dark:hover:text-violet-400'
               }`}>
-              <span className={`w-2 h-2 rounded-full flex-shrink-0 ${funMode ? 'bg-violet-500' : 'bg-slate-400 dark:bg-slate-500'}`} />
               Fun Mode {funMode ? '😂' : ''}
             </button>
             <div className="flex items-center gap-3">
