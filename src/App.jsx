@@ -143,7 +143,7 @@ export default function App() {
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}))
-        throw new Error(data.error || 'Analysis failed')
+        throw new Error(data.message || data.error || 'Analysis failed')
       }
 
       const data = await res.json()
