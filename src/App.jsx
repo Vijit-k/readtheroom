@@ -317,7 +317,7 @@ export default function App() {
             </a>
             <a href="https://sspro.vijit.in" target="_blank" rel="noopener noreferrer"
               className="flex flex-col gap-1 p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-700 hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-all group">
-              <span className="text-base">🎯</span>
+              <img src="/sspro-logo.png" alt="SalesScraper Pro" className="w-6 h-6 object-contain" />
               <span className="text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-blue-700 dark:group-hover:text-blue-400 leading-tight">SalesScraper Pro</span>
               <span className="text-[10px] text-slate-400 leading-tight">LinkedIn lead extraction</span>
             </a>
