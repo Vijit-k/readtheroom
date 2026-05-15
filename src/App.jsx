@@ -205,9 +205,14 @@ export default function App() {
       {/* ── Header ── */}
       <header className="sticky top-0 z-20 border-b border-slate-200/80 dark:border-slate-800/80 bg-cream/90 dark:bg-navy-950/90 backdrop-blur-md">
         <div className="max-w-2xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div>
-            <span className="text-lg font-black tracking-tight text-slate-900 dark:text-white">ReadTheRoom</span>
-            <span className="hidden sm:inline text-slate-400 dark:text-slate-500 text-sm ml-3">Before you hit send.</span>
+          <div className="flex items-center gap-3">
+            <a href="https://vijitlabs.com" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
+              <img src="/logo-icon.png" alt="Vijit Labs" className="w-8 h-8 object-contain" />
+            </a>
+            <div>
+              <span className="text-lg font-black tracking-tight text-slate-900 dark:text-white">ReadTheRoom</span>
+              <span className="hidden sm:inline text-slate-400 dark:text-slate-500 text-sm ml-3">Before you hit send.</span>
+            </div>
           </div>
           <div className="flex items-center gap-3">
             {history.length > 0 && (
@@ -481,9 +486,10 @@ export default function App() {
       <footer className="mt-12 border-t border-slate-200/80 dark:border-slate-800/80 py-8">
         <div className="max-w-2xl mx-auto px-4 text-center space-y-2">
           <a href="https://vijitlabs.com" target="_blank" rel="noopener noreferrer"
-            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors">
-            Built by <strong className="text-slate-700 dark:text-slate-300">Vijit Labs</strong> · AI tools for support &amp; sales teams
+            className="inline-flex items-center gap-2.5 hover:opacity-80 transition-opacity">
+            <img src="/logo-full.png" alt="Vijit Labs" className="h-7 object-contain" />
           </a>
+          <p className="text-xs text-slate-400 dark:text-slate-500">AI tools for support &amp; sales teams</p>
           <div className="flex items-center justify-center gap-4 text-xs text-slate-400 dark:text-slate-500">
             <a href="https://escalationai.vijit.in" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors">EscalationAI</a>
             <span>·</span>
