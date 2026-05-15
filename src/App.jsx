@@ -97,6 +97,47 @@ function CrossPromo({ tone }) {
   )
 }
 
+function DisclaimerModal({ onAccept }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4"
+      style={{ backgroundColor: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}>
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-2xl max-w-md w-full p-7 animate-fade-in">
+        <div className="text-3xl mb-4">👁️</div>
+        <h2 className="text-xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">
+          Before you paste anything…
+        </h2>
+        <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5">
+          ReadTheRoom is a <strong className="text-slate-700 dark:text-slate-300">fun, free tool</strong> — please keep it that way.
+        </p>
+        <ul className="space-y-2.5 mb-6">
+          {[
+            'Don\'t paste passwords, API keys, or login credentials',
+            'Don\'t paste confidential business data or legal documents',
+            'Don\'t paste personal information like IDs, bank details, or medical records',
+            'Your message is sent to an AI for analysis and is not stored by us',
+          ].map((item, i) => (
+            <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-400">
+              <span className="text-amber-500 mt-0.5 flex-shrink-0">⚠</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p className="text-xs text-slate-400 dark:text-slate-500 mb-5 leading-relaxed">
+          This tool is meant for everyday messages — emails, Slack threads, customer replies. Use good judgment. By continuing you confirm you understand this.
+        </p>
+        <button
+          onClick={onAccept}
+          className="w-full py-3.5 rounded-2xl font-bold text-white text-sm
+            bg-gradient-to-r from-indigo-600 to-violet-600
+            hover:from-indigo-500 hover:to-violet-500
+            shadow-md transition-all duration-200 active:scale-[0.985]">
+          Got it — let's go ✦
+        </button>
+      </div>
+    </div>
+  )
+}
+
 // ── Main App ─────────────────────────────────────────────────────────────────
 export default function App() {
   const [darkMode, setDarkMode] = useState(() =>
@@ -113,6 +154,8 @@ export default function App() {
     try { return JSON.parse(localStorage.getItem('rtr_history') || '[]') } catch { return [] }
   })
   const [showHistory, setShowHistory] = useState(false)
+  const [showDisclaimer, setShowDisclaimer] = useState(false)
+  const [pendingAnalyze, setPendingAnalyze] = useState(false)
 
   const resultsRef = useRef(null)
   const textareaRef = useRef(null)
@@ -128,8 +171,7 @@ export default function App() {
     return () => clearInterval(t)
   }, [])
 
-  const analyze = async () => {
-    if (!text.trim() || loading) return
+  const runAnalysis = async () => {
     setLoading(true)
     setError('')
     setResult(null)
@@ -177,6 +219,26 @@ export default function App() {
     }
   }
 
+  const analyze = () => {
+    if (!text.trim() || loading) return
+    const accepted = localStorage.getItem('rtr_disclaimer_accepted')
+    if (!accepted) {
+      setPendingAnalyze(true)
+      setShowDisclaimer(true)
+    } else {
+      runAnalysis()
+    }
+  }
+
+  const acceptDisclaimer = () => {
+    localStorage.setItem('rtr_disclaimer_accepted', '1')
+    setShowDisclaimer(false)
+    if (pendingAnalyze) {
+      setPendingAnalyze(false)
+      runAnalysis()
+    }
+  }
+
   const handleKeyDown = (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') analyze()
   }
@@ -201,6 +263,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
+
+      {/* ── Disclaimer modal (first use only) ── */}
+      {showDisclaimer && <DisclaimerModal onAccept={acceptDisclaimer} />}
 
       {/* ── Header ── */}
       <header className="sticky top-0 z-20 border-b border-slate-200/80 dark:border-slate-800/80 bg-cream/90 dark:bg-navy-950/90 backdrop-blur-md">
