@@ -45,7 +45,7 @@ Scoring guide for risk_score:
 
     try {
         const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -61,8 +61,10 @@ Scoring guide for risk_score:
 
         if (!response.ok) {
             const err = await response.text();
-            console.error('[ReadTheRoom] Gemini error:', err);
-            throw new Error('Gemini API error');
+            console.error('[ReadTheRoom] Gemini error:', response.status, err);
+            let detail = '';
+            try { detail = JSON.parse(err)?.error?.message || ''; } catch {}
+            throw new Error(`Gemini API error ${response.status}${detail ? ': ' + detail : ''}`);
         }
 
         const data = await response.json();
@@ -81,6 +83,6 @@ Scoring guide for risk_score:
 
     } catch (err) {
         console.error('[ReadTheRoom] Error:', err.message);
-        return res.status(500).json({ error: 'Analysis failed. Please try again.' });
+        return res.status(500).json({ error: err.message || 'Analysis failed. Please try again.' });
     }
 }
