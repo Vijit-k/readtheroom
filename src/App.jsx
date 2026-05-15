@@ -487,7 +487,9 @@ export default function App() {
         <div className="max-w-2xl mx-auto px-4 text-center space-y-2">
           <a href="https://vijitlabs.com" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 hover:opacity-80 transition-opacity">
-            <img src="/logo-full.png" alt="Vijit Labs" className="h-7 object-contain" />
+            <div className="bg-slate-900 dark:bg-slate-800 rounded-xl px-4 py-2">
+              <img src="/logo-full.png" alt="Vijit Labs" className="h-7 object-contain" />
+            </div>
           </a>
           <p className="text-xs text-slate-400 dark:text-slate-500">AI tools for support &amp; sales teams</p>
           <div className="flex items-center justify-center gap-4 text-xs text-slate-400 dark:text-slate-500">
