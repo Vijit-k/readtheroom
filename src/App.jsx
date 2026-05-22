@@ -89,7 +89,7 @@ function CrossPromo({ tone }) {
       <div>
         <p className="text-xs font-semibold text-orange-800 dark:text-orange-300">Managing a support team?</p>
         <p className="text-xs text-orange-700/80 dark:text-orange-400/80 mt-0.5">
-          EscalationAI detects messages like this automatically inside Zendesk — before they blow up.{' '}
+          EscalationAI detects messages like this automatically inside Zendesk — before they blow up. ISO 42001 aligned: every AI decision is logged and explainable.{' '}
           <span className="underline group-hover:text-orange-800 dark:group-hover:text-orange-300">Try free →</span>
         </p>
       </div>
@@ -382,6 +382,7 @@ export default function App() {
               <span className="text-base">⚡</span>
               <span className="text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-orange-700 dark:group-hover:text-orange-400 leading-tight">EscalationAI</span>
               <span className="text-[10px] text-slate-400 leading-tight">Zendesk risk scoring</span>
+              <span className="text-[9px] font-bold text-blue-600 dark:text-blue-400 leading-tight">⚖️ ISO 42001</span>
             </a>
             <a href="https://calllens.vijit.in" target="_blank" rel="noopener noreferrer"
               className="flex flex-col gap-1 p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/10 transition-all group">
